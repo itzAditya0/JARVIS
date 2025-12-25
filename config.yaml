@@ -1,0 +1,30 @@
+# JARVIS Configuration - Single Source of Truth
+
+audio:
+  sample_rate: 16000
+  channels: 1
+  dtype: float32
+  push_to_talk_key: space  # Key to hold for recording
+
+stt:
+  model: medium  # Options: tiny, base, small, medium, large-v3
+  language: en   # Locked language (no auto-detect)
+  beam_size: 5
+  confidence_threshold: 0.6  # Reject transcriptions below this
+  device: auto   # Options: auto, cpu, cuda
+
+commands:
+  registry_path: commands/command_map.yaml
+
+security:
+  default_policy: deny  # deny | allow
+  require_explicit_permission: true
+
+orchestrator:
+  max_retries: 2
+  timeout_seconds: 30
+
+logging:
+  level: INFO  # DEBUG, INFO, WARNING, ERROR
+  format: "%(asctime)s | %(levelname)s | %(name)s | %(message)s"
+  file: logs/jarvis.log

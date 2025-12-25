@@ -1,0 +1,22 @@
+# JARVIS Voice Assistant - Dependencies
+# Phase 1: Minimal Viable Assistant
+
+# Audio capture
+sounddevice>=0.4.6
+numpy>=1.24.0
+
+# Speech-to-text
+faster-whisper>=1.0.0
+
+# Configuration and validation
+pyyaml>=6.0
+pydantic>=2.0.0
+
+# Keyboard input (push-to-talk)
+pynput>=1.7.6
+
+# Logging
+rich>=13.0.0
+
+# Phase 2: LLM Integration
+google-generativeai>=0.8.0

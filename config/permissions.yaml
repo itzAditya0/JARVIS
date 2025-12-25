@@ -1,0 +1,31 @@
+# JARVIS Tool Permission Configuration
+# =====================================
+#
+# v0.6.0 Governance Release
+#
+# IMPORTANT: Default grants are pre-approved explicit grants loaded at startup.
+# They are not exceptions to the authority model—they ARE the authority model.
+
+# Tools granted by default (low risk, READ-only)
+# These execute without user confirmation.
+default_grants:
+  - target: "get_current_time"
+    level: read
+  - target: "get_current_date"
+    level: read
+  - target: "list_scheduled_tasks"
+    level: read
+  - target: "list_directory"
+    level: read
+
+# Permission levels that require user confirmation before execution.
+# Even if a default grant exists, these levels still require confirmation.
+requires_confirmation:
+  - write
+  - execute
+  - network
+
+# Permission levels that are always blocked.
+# No grant can override this—requires explicit admin mode (future).
+always_blocked:
+  - admin

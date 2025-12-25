@@ -1,0 +1,161 @@
+# JARVIS Command Registry
+# Hardcoded command definitions - no LLM logic
+# Every command is auditable without running the system
+
+commands:
+  # System commands
+  - id: system.status
+    name: Check System Status
+    patterns:
+      - "check system status"
+      - "system status"
+      - "how is the system"
+    permission: read
+    description: Display current system status and resource usage
+    
+  - id: system.time
+    name: Get Current Time
+    patterns:
+      - "what time is it"
+      - "what is time"
+      - "what is the time"
+      - "what's the time"
+      - "current time"
+      - "tell me the time"
+      - "time please"
+      - "time"
+    permission: read
+    description: Report the current system time
+    
+  - id: system.date
+    name: Get Current Date
+    patterns:
+      - "what is today's date"
+      - "current date"
+      - "what day is it"
+    permission: read
+    description: Report the current date
+
+  # Browser commands
+  - id: browser.open
+    name: Open Browser
+    patterns:
+      - "open browser"
+      - "launch browser"
+      - "start browser"
+    permission: execute
+    description: Open the default web browser
+    
+  - id: browser.search
+    name: Web Search
+    patterns:
+      - "search for {query}"
+      - "look up {query}"
+      - "google {query}"
+    args:
+      - name: query
+        type: string
+        required: true
+    permission: execute
+    description: Search the web for a query
+
+  # Application commands
+  - id: app.open
+    name: Open Application
+    patterns:
+      - "open {app_name}"
+      - "launch {app_name}"
+      - "start {app_name}"
+    args:
+      - name: app_name
+        type: string
+        required: true
+    permission: execute
+    description: Open a specified application
+    
+  - id: app.close
+    name: Close Application
+    patterns:
+      - "close {app_name}"
+      - "quit {app_name}"
+      - "exit {app_name}"
+    args:
+      - name: app_name
+        type: string
+        required: true
+    permission: execute
+    description: Close a specified application
+
+  # File commands
+  - id: file.list
+    name: List Files
+    patterns:
+      - "list files"
+      - "show files"
+      - "what files are here"
+    permission: read
+    description: List files in the current directory
+    
+  - id: file.open
+    name: Open File
+    patterns:
+      - "open file {filename}"
+      - "open {filename}"
+    args:
+      - name: filename
+        type: string
+        required: true
+    permission: read
+    description: Open a specified file
+
+  # Volume commands
+  - id: audio.volume_up
+    name: Volume Up
+    patterns:
+      - "volume up"
+      - "increase volume"
+      - "louder"
+    permission: execute
+    description: Increase system volume
+    
+  - id: audio.volume_down
+    name: Volume Down
+    patterns:
+      - "volume down"
+      - "decrease volume"
+      - "quieter"
+    permission: execute
+    description: Decrease system volume
+    
+  - id: audio.mute
+    name: Mute
+    patterns:
+      - "mute"
+      - "mute audio"
+      - "silence"
+    permission: execute
+    description: Mute system audio
+
+  # Assistant commands
+  - id: assistant.help
+    name: Help
+    patterns:
+      - "help"
+      - "what can you do"
+      - "show commands"
+    permission: read
+    description: Show available commands
+    
+  - id: assistant.stop
+    name: Stop
+    patterns:
+      - "stop"
+      - "cancel"
+      - "nevermind"
+    permission: read
+    description: Cancel current operation
+
+# Permission levels (for reference):
+# - read: Safe, no side effects
+# - execute: May have side effects, requires explicit permission
+# - admin: System-level changes, always requires confirmation
