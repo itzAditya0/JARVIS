@@ -17,13 +17,18 @@ default_grants:
     level: read
   - target: "list_directory"
     level: read
+  - target: "take_screenshot"
+    level: read
+  - target: "capture_camera"
+    level: read
+  - target: "web_search"
+    level: network
 
 # Permission levels that require user confirmation before execution.
 # Even if a default grant exists, these levels still require confirmation.
 requires_confirmation:
   - write
   - execute
-  - network
 
 # Permission levels that are always blocked.
 # No grant can override this—requires explicit admin mode (future).

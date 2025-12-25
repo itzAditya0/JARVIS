@@ -269,6 +269,7 @@ class ToolExecutor:
                 tool_name=tool.name,
                 status=ExecutionStatus.CONFIRMATION_REQUIRED,
                 pending_confirmation=pending,
+                error="User confirmation required (no callback provided)",
                 turn_id=turn_id
             )
         

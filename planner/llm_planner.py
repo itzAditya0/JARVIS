@@ -155,7 +155,11 @@ class LLMPlanner:
         """Get or create the Gemini client."""
         if self._client is None:
             try:
-                import google.generativeai as genai
+                import warnings
+                # Suppress deprecation warning for google.generativeai
+                with warnings.catch_warnings():
+                    warnings.simplefilter("ignore")
+                    import google.generativeai as genai
                 
                 api_key = self.config.api_key or os.getenv("GEMINI_API_KEY")
                 if not api_key:
@@ -256,7 +260,7 @@ class LLMPlanner:
         
         # Open app
         if "open" in user_msg:
-            apps = ["safari", "chrome", "spotify", "finder", "terminal", "notes"]
+            apps = ["safari", "chrome", "spotify", "finder", "terminal", "notes", "photos"]
             for app in apps:
                 if app in user_msg:
                     return self._parse_output(json.dumps({

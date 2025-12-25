@@ -109,7 +109,10 @@ class Phase2Orchestrator(Orchestrator):
         self._tool_registry = create_default_tools()
         self._logger.info(f"Tool registry loaded: {len(self._tool_registry)} tools")
         
-        self._tool_executor = ToolExecutor(self._tool_registry)
+        self._tool_executor = ToolExecutor(
+            self._tool_registry,
+            config_path="config/permissions.yaml"
+        )
         self._logger.info("Tool executor initialized")
         
         if self.phase2_config.mode == "llm":
